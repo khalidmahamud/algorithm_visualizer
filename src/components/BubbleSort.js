@@ -6,7 +6,7 @@ export const BubbleSort = ({ data, generateArray }) => {
     const [currIdx1, setCurrIdx1] = useState(-1);
     const [currIdx2, setCurrIdx2] = useState(-1);
 
-    const calculatedWidth = Math.round((window.innerWidth - 200) / data.length);
+    const calculatedWidth = Math.round((window.innerWidth * 1 / 2) / data.length);
     const width = calculatedWidth < 35 ? calculatedWidth : 35;
 
     const bubbleSort = async () => {
