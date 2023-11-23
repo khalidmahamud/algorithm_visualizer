@@ -41,7 +41,7 @@ export const BubbleSort = ({ data, generateArray }) => {
     }, [generateArray]);
 
     return (
-        <main className=''>
+        <main className='p-5'>
             <div className="h-[100vh] flex flex-col items-center justify-center gap-2">
                 <button onClick={() => generateArray(50)} className="bg-blue-950 px-3 py-2 rounded-md text-slate-200 font-mono">
                     Generate New Array
