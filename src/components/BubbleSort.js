@@ -38,6 +38,8 @@ export const BubbleSort = ({ data, generateArray }) => {
 
     useEffect(() => {
         setSortedData([...data]);
+        setCurrIdx1(-1);
+        setCurrIdx2(-2);
     }, [generateArray]);
 
     return (
