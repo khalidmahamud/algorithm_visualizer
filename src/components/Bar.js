@@ -1,5 +1,5 @@
 export const Bar = ({ height, isSwapping, isSorted, isInPosition }) => {
-    const barHeight = (height ** 1.3) + 20;
+    const barHeight = window.innerHeight < 800 ? (height ** 1.3) + 20 : (height ** 1.5) + 20;
 
     const barColor = isSorted ? 'lightGreen' : isInPosition ? 'mediumPurple' : isSwapping ? 'red' : '';
 
