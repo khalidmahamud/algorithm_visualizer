@@ -7,9 +7,9 @@ body {
 }
 
 .App {
-    @apply h-[100vh] flex flex-col
+    @apply flex flex-col
 }
 
 main {
-    @apply max-w-4xl mx-auto h-[100vh]
+    @apply max-w-4xl mx-auto
 }

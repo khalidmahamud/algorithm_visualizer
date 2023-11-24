@@ -1,11 +1,11 @@
-export const Bar = ({ width, height, isSwapping, isSorted }) => {
-    const barHeight = (height + 1) ** 1.4 + 20;
+export const Bar = ({ height, isSwapping, isSorted, isInPosition }) => {
+    const barHeight = (height ** 1.3) + 20;
 
-    const barColor = isSorted ? 'lightGreen' : isSwapping ? 'red' : '';
+    const barColor = isSorted ? 'lightGreen' : isInPosition ? 'mediumPurple' : isSwapping ? 'red' : '';
 
     return (
         <div className="flex flex-col gap-5 w-auto h-auto">
-            <div className="bg-violet-500" style={{backgroundColor: `${barColor}`, width: `${width}px`, height: `${barHeight}px`}}></div>
+            <div className="bg-slate-300" style={{backgroundColor: `${barColor}`, width: '5px', height: `${barHeight}px`}}></div>
         </div>
     );
 };

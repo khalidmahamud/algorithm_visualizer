@@ -5,9 +5,15 @@ export const BubbleSort = ({ data, generateArray }) => {
     const [sortedData, setSortedData] = useState([...data]);
     const [currIdx1, setCurrIdx1] = useState(-1);
     const [currIdx2, setCurrIdx2] = useState(-1);
+    const [lastSorted, setLastSorted] = useState(Number.MAX_SAFE_INTEGER);
+    
+    useEffect(() => {
+        setSortedData([...data]);
+        setCurrIdx1(-1);
+        setCurrIdx2(-2);
+        setLastSorted(Number.MAX_SAFE_INTEGER);
+    }, [generateArray]);
 
-    const calculatedWidth = Math.round(((window.innerWidth * 1 / 2) - 50) / data.length);
-    const width = calculatedWidth < 35 ? calculatedWidth : 35;
 
     const bubbleSort = async () => {
         const newHeights = [...sortedData];
@@ -23,9 +29,10 @@ export const BubbleSort = ({ data, generateArray }) => {
                     setSortedData([...newHeights]);
 
                     swap = true;
-                    await new Promise(resolve => setTimeout(resolve, 20));
+                    await new Promise(resolve => setTimeout(resolve, 10));
                 }
             }
+            
 
             setCurrIdx1(null);
             setCurrIdx2(null);
@@ -33,19 +40,16 @@ export const BubbleSort = ({ data, generateArray }) => {
             if (!swap) {
                 break;
             }
+
+            setLastSorted(newHeights[newHeights.length - i - 1]);
         }
     };
 
-    useEffect(() => {
-        setSortedData([...data]);
-        setCurrIdx1(-1);
-        setCurrIdx2(-2);
-    }, [generateArray]);
 
     return (
-        <main className='p-5'>
+        <main className='p-5 mt-16'>
             <div className="h-[100vh] flex flex-col items-center justify-center gap-2">
-                <button onClick={() => generateArray(50)} className="bg-blue-950 px-3 py-2 rounded-md text-slate-200 font-mono">
+                <button onClick={() => generateArray()} className="bg-blue-950 px-3 py-2 rounded-md text-slate-200 font-mono">
                     Generate New Array
                 </button>
                 <div className="mb-20">
@@ -59,10 +63,10 @@ export const BubbleSort = ({ data, generateArray }) => {
                         {sortedData.map((height, index) => (
                             <Bar
                                 key={index}
-                                width={width}
                                 height={height}
                                 isSwapping={currIdx1 === index || currIdx2 === index}
-                                isSorted={currIdx1 === null || currIdx2 === null}
+                                isSorted={currIdx1 === null || currIdx1 === null}
+                                isInPosition={height >= lastSorted}
                             />
                         ))}
                     </div>
